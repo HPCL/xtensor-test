@@ -4,7 +4,7 @@ See "https://software.intel.com/en-us/intel-advisor-xe" for details.
 
 Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
 
-Compiler options: -g -std=c++17 -qopt-report=4 -qopt-report-phase=loop,vec -qopt-report-file=plain_report.txt -fargument-noalias -O3 -march=skylake-avx512 -o plain-test.exe
+Compiler options: -g -std=c++17 -qopt-report=4 -qopt-report-phase=loop,vec -qopt-report-file=plain_report.txt -fargument-noalias -O3 -march=skylake-avx512 -qopt-zmm-usage=high -o plain-test.exe
 
 Begin optimization report for: main(int, char **)
 
@@ -44,19 +44,18 @@ LOOP BEGIN at plain-test.cc(231,3)
             remark #15388: vectorization support: reference gen._M_x[__k] has aligned access   [ /usr/include/c++/7.3.0/bits/random.tcc(408,4) ]
             remark #15389: vectorization support: reference gen._M_x[__k+397] has unaligned access   [ /usr/include/c++/7.3.0/bits/random.tcc(408,17) ]
             remark #15381: vectorization support: unaligned access used inside loop body
-            remark #15305: vectorization support: vector length 4
-            remark #15309: vectorization support: normalized vectorization overhead 0.188
+            remark #15305: vectorization support: vector length 8
+            remark #15309: vectorization support: normalized vectorization overhead 0.176
             remark #15300: LOOP WAS VECTORIZED
-            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
             remark #15448: unmasked aligned unit stride loads: 1 
             remark #15449: unmasked aligned unit stride stores: 1 
             remark #15450: unmasked unaligned unit stride loads: 2 
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 19 
-            remark #15477: vector cost: 8.000 
-            remark #15478: estimated potential speedup: 2.310 
+            remark #15477: vector cost: 4.250 
+            remark #15478: estimated potential speedup: 4.200 
             remark #15488: --- end vector cost summary ---
-            remark #25015: Estimate of max trip count of loop=56
+            remark #25015: Estimate of max trip count of loop=28
          LOOP END
 
          LOOP BEGIN at /usr/include/c++/7.3.0/bits/random.tcc(412,7) inlined into plain-test.cc(234,31)
@@ -120,13 +119,13 @@ LOOP BEGIN at plain-test.cc(28,3) inlined into plain-test.cc(239,3)
             remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
             remark #15305: vectorization support: vector length 8
             remark #15427: loop was completely unrolled
-            remark #15309: vectorization support: normalized vectorization overhead 0.556
+            remark #15309: vectorization support: normalized vectorization overhead 0.588
             remark #15456: masked unaligned unit stride loads: 2 
             remark #15457: masked unaligned unit stride stores: 1 
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 10 
-            remark #15477: vector cost: 2.250 
-            remark #15478: estimated potential speedup: 2.140 
+            remark #15477: vector cost: 2.120 
+            remark #15478: estimated potential speedup: 2.220 
             remark #15488: --- end vector cost summary ---
             remark #25436: completely unrolled by 6  
          LOOP END
@@ -317,12 +316,11 @@ LOOP BEGIN at plain-test.cc(83,3) inlined into plain-test.cc(241,3)
             remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(87,62) ]
             remark #15305: vectorization support: vector length 4
             remark #15300: LOOP WAS VECTORIZED
-            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
             remark #15452: unmasked strided loads: 32 
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 168 
             remark #15477: vector cost: 104.000 
-            remark #15478: estimated potential speedup: 1.340 
+            remark #15478: estimated potential speedup: 1.210 
             remark #15488: --- end vector cost summary ---
             remark #25015: Estimate of max trip count of loop=1
          LOOP END
@@ -379,7 +377,7 @@ LOOP BEGIN at plain-test.cc(83,3) inlined into plain-test.cc(241,3)
          remark #15462: unmasked indexed (or gather) loads: 4 
          remark #15475: --- begin vector cost summary ---
          remark #15476: scalar cost: 42 
-         remark #15477: vector cost: 38.370 
+         remark #15477: vector cost: 38.250 
          remark #15478: estimated potential speedup: 0.780 
          remark #15488: --- end vector cost summary ---
          remark #25436: completely unrolled by 6  
@@ -439,13 +437,13 @@ LOOP BEGIN at plain-test.cc(83,3) inlined into plain-test.cc(241,3)
       remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(87,11) ]
       remark #15415: vectorization support: non-unit strided load was generated for the variable <Ax[x+(i*6+k)*9600000]>, masked, stride is 57600000   [ plain-test.cc(87,37) ]
       remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.054
+      remark #15309: vectorization support: normalized vectorization overhead 0.055
       remark #15460: masked strided loads: 2 
       remark #15462: unmasked indexed (or gather) loads: 1 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 11 
-      remark #15477: vector cost: 9.250 
-      remark #15478: estimated potential speedup: 0.840 
+      remark #15477: vector cost: 9.120 
+      remark #15478: estimated potential speedup: 0.850 
       remark #15488: --- end vector cost summary ---
       remark #25436: completely unrolled by 6  
 
@@ -455,13 +453,13 @@ LOOP BEGIN at plain-test.cc(83,3) inlined into plain-test.cc(241,3)
          remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(87,11) ]
          remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(87,62) ]
          remark #15305: vectorization support: vector length 8
-         remark #15309: vectorization support: normalized vectorization overhead 0.055
+         remark #15309: vectorization support: normalized vectorization overhead 0.056
          remark #15460: masked strided loads: 2 
          remark #15462: unmasked indexed (or gather) loads: 1 
          remark #15475: --- begin vector cost summary ---
          remark #15476: scalar cost: 11 
-         remark #15477: vector cost: 9.120 
-         remark #15478: estimated potential speedup: 0.850 
+         remark #15477: vector cost: 9.000 
+         remark #15478: estimated potential speedup: 0.860 
          remark #15488: --- end vector cost summary ---
          remark #25436: completely unrolled by 6  
 
@@ -474,7 +472,7 @@ LOOP BEGIN at plain-test.cc(83,3) inlined into plain-test.cc(241,3)
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 11 
             remark #15477: vector cost: 5.250 
-            remark #15478: estimated potential speedup: 1.530 
+            remark #15478: estimated potential speedup: 1.570 
             remark #15488: --- end vector cost summary ---
             remark #25436: completely unrolled by 6  
          LOOP END
@@ -642,18 +640,16 @@ LOOP BEGIN at plain-test.cc(130,5)
          remark #15389: vectorization support: reference Bx[n+i*16+x*576] has unaligned access   [ plain-test.cc(133,9) ]
          remark #15389: vectorization support: reference input[i][n+x*16] has unaligned access   [ plain-test.cc(133,34) ]
          remark #15381: vectorization support: unaligned access used inside loop body
-         remark #15305: vectorization support: vector length 8
+         remark #15305: vectorization support: vector length 16
          remark #15427: loop was completely unrolled
-         remark #15399: vectorization support: unroll factor set to 2
-         remark #15309: vectorization support: normalized vectorization overhead 0.346
+         remark #15309: vectorization support: normalized vectorization overhead 0.562
          remark #15300: LOOP WAS VECTORIZED
-         remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
          remark #15450: unmasked unaligned unit stride loads: 1 
          remark #15451: unmasked unaligned unit stride stores: 2 
          remark #15475: --- begin vector cost summary ---
          remark #15476: scalar cost: 11 
-         remark #15477: vector cost: 1.620 
-         remark #15478: estimated potential speedup: 5.020 
+         remark #15477: vector cost: 1.000 
+         remark #15478: estimated potential speedup: 7.040 
          remark #15488: --- end vector cost summary ---
       LOOP END
    LOOP END
@@ -1132,19 +1128,17 @@ LOOP BEGIN at plain-test.cc(141,5)
       remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(179,186) ]
       remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(179,201) ]
       remark #15381: vectorization support: unaligned access used inside loop body
-      remark #15305: vectorization support: vector length 8
+      remark #15305: vectorization support: vector length 16
       remark #15427: loop was completely unrolled
-      remark #15309: vectorization support: normalized vectorization overhead 0.310
+      remark #15309: vectorization support: normalized vectorization overhead 0.281
       remark #15300: LOOP WAS VECTORIZED
-      remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
       remark #15450: unmasked unaligned unit stride loads: 72 
       remark #15451: unmasked unaligned unit stride stores: 36 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 1350 
-      remark #15477: vector cost: 130.500 
-      remark #15478: estimated potential speedup: 8.950 
+      remark #15477: vector cost: 72.000 
+      remark #15478: estimated potential speedup: 14.630 
       remark #15488: --- end vector cost summary ---
-      remark #25015: Estimate of max trip count of loop=2
    LOOP END
 LOOP END
 
@@ -1155,7 +1149,7 @@ LOOP BEGIN at plain-test.cc(183,5)
 
    LOOP BEGIN at plain-test.cc(185,7)
       remark #15542: loop was not vectorized: inner loop was already vectorized
-      remark #25456: Number of Array Refs Scalar Replaced In Loop: 120
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 60
 
       LOOP BEGIN at plain-test.cc(186,9)
          remark #15542: loop was not vectorized: inner loop was already vectorized
@@ -1171,18 +1165,16 @@ LOOP BEGIN at plain-test.cc(183,5)
                remark #15389: vectorization support: reference Ax[Nx+(i*6+k)*16+n] has unaligned access   [ plain-test.cc(189,46) ]
                remark #15389: vectorization support: reference Bx[Nx+(k*6+j)*16+n] has unaligned access   [ plain-test.cc(189,76) ]
                remark #15381: vectorization support: unaligned access used inside loop body
-               remark #15305: vectorization support: vector length 8
+               remark #15305: vectorization support: vector length 16
                remark #15427: loop was completely unrolled
-               remark #15399: vectorization support: unroll factor set to 2
-               remark #15309: vectorization support: normalized vectorization overhead 0.500
+               remark #15309: vectorization support: normalized vectorization overhead 0.750
                remark #15300: LOOP WAS VECTORIZED
-               remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
                remark #15450: unmasked unaligned unit stride loads: 3 
                remark #15451: unmasked unaligned unit stride stores: 1 
                remark #15475: --- begin vector cost summary ---
                remark #15476: scalar cost: 11 
-               remark #15477: vector cost: 1.500 
-               remark #15478: estimated potential speedup: 4.880 
+               remark #15477: vector cost: 1.000 
+               remark #15478: estimated potential speedup: 6.280 
                remark #15488: --- end vector cost summary ---
             LOOP END
          LOOP END
@@ -1224,8 +1216,8 @@ LOOP BEGIN at plain-test.cc(19,3)
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(21,22) ]
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(22,22) ]
       remark #15381: vectorization support: unaligned access used inside loop body
-      remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.273
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.214
       remark #15301: PEEL LOOP WAS VECTORIZED
       remark #25015: Estimate of max trip count of loop=1
    LOOP END
@@ -1235,18 +1227,17 @@ LOOP BEGIN at plain-test.cc(19,3)
       remark #15388: vectorization support: reference input[i][x] has aligned access   [ plain-test.cc(22,22) ]
       remark #15416: vectorization support: non-unit strided store was generated for the variable <Ax[i+x*36]>, stride is 36   [ plain-test.cc(21,7) ]
       remark #15416: vectorization support: non-unit strided store was generated for the variable <Bx[i+x*36]>, stride is 36   [ plain-test.cc(22,7) ]
-      remark #15305: vectorization support: vector length 16
-      remark #15309: vectorization support: normalized vectorization overhead 0.128
+      remark #15305: vectorization support: vector length 32
+      remark #15309: vectorization support: normalized vectorization overhead 0.091
       remark #15300: LOOP WAS VECTORIZED
-      remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
       remark #15448: unmasked aligned unit stride loads: 1 
       remark #15453: unmasked strided stores: 2 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 11 
-      remark #15477: vector cost: 4.870 
-      remark #15478: estimated potential speedup: 2.250 
+      remark #15477: vector cost: 3.430 
+      remark #15478: estimated potential speedup: 3.190 
       remark #15488: --- end vector cost summary ---
-      remark #25015: Estimate of max trip count of loop=600000
+      remark #25015: Estimate of max trip count of loop=300000
    LOOP END
 
    LOOP BEGIN at plain-test.cc(20,5)
@@ -1254,8 +1245,8 @@ LOOP BEGIN at plain-test.cc(19,3)
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(21,22) ]
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(22,22) ]
       remark #15381: vectorization support: unaligned access used inside loop body
-      remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.273
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.214
       remark #15301: REMAINDER LOOP WAS VECTORIZED
    LOOP END
 LOOP END
@@ -1282,13 +1273,13 @@ LOOP BEGIN at plain-test.cc(28,3)
             remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
             remark #15305: vectorization support: vector length 8
             remark #15427: loop was completely unrolled
-            remark #15309: vectorization support: normalized vectorization overhead 0.556
+            remark #15309: vectorization support: normalized vectorization overhead 0.588
             remark #15456: masked unaligned unit stride loads: 2 
             remark #15457: masked unaligned unit stride stores: 1 
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 10 
-            remark #15477: vector cost: 2.250 
-            remark #15478: estimated potential speedup: 2.140 
+            remark #15477: vector cost: 2.120 
+            remark #15478: estimated potential speedup: 2.220 
             remark #15488: --- end vector cost summary ---
             remark #25436: completely unrolled by 6  
          LOOP END
@@ -1438,8 +1429,8 @@ LOOP BEGIN at plain-test.cc(75,5)
       remark #15389: vectorization support: reference Bx[i*9600000+x] has unaligned access   [ plain-test.cc(77,7) ]
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(77,22) ]
       remark #15381: vectorization support: unaligned access used inside loop body
-      remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.706
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.632
       remark #15301: PEEL LOOP WAS VECTORIZED
       remark #15442: entire loop may be executed in remainder
       remark #15448: unmasked aligned unit stride loads: 3 
@@ -1453,10 +1444,9 @@ LOOP BEGIN at plain-test.cc(75,5)
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(77,22) ]
       remark #15381: vectorization support: unaligned access used inside loop body
       remark #15412: vectorization support: streaming store was generated for Bx[i*9600000+x]   [ plain-test.cc(77,7) ]
-      remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 1.455
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 1.231
       remark #15301: PERMUTED LOOP WAS VECTORIZED
-      remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
       remark #15442: entire loop may be executed in remainder
       remark #15449: unmasked aligned unit stride stores: 1 
       remark #15450: unmasked unaligned unit stride loads: 1 
@@ -1464,10 +1454,10 @@ LOOP BEGIN at plain-test.cc(75,5)
       remark #15467: unmasked aligned streaming stores: 1 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 11 
-      remark #15477: vector cost: 1.370 
-      remark #15478: estimated potential speedup: 7.990 
+      remark #15477: vector cost: 0.810 
+      remark #15478: estimated potential speedup: 13.530 
       remark #15488: --- end vector cost summary ---
-      remark #25015: Estimate of max trip count of loop=1200000
+      remark #25015: Estimate of max trip count of loop=600000
    LOOP END
 
    LOOP BEGIN at plain-test.cc(74,3)
@@ -1477,8 +1467,8 @@ LOOP BEGIN at plain-test.cc(75,5)
       remark #15389: vectorization support: reference Bx[i*9600000+x] has unaligned access   [ plain-test.cc(77,7) ]
       remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(77,22) ]
       remark #15381: vectorization support: unaligned access used inside loop body
-      remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.706
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.632
       remark #15301: REMAINDER LOOP WAS VECTORIZED
       remark #15442: entire loop may be executed in remainder
       remark #15448: unmasked aligned unit stride loads: 3 
@@ -1532,12 +1522,11 @@ LOOP BEGIN at plain-test.cc(83,3)
             remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(87,62) ]
             remark #15305: vectorization support: vector length 4
             remark #15300: LOOP WAS VECTORIZED
-            remark #26013: Compiler has chosen to target XMM/YMM vector. Try using -qopt-zmm-usage=high to override
             remark #15452: unmasked strided loads: 32 
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 168 
             remark #15477: vector cost: 104.000 
-            remark #15478: estimated potential speedup: 1.340 
+            remark #15478: estimated potential speedup: 1.210 
             remark #15488: --- end vector cost summary ---
             remark #25015: Estimate of max trip count of loop=1
          LOOP END
@@ -1594,7 +1583,7 @@ LOOP BEGIN at plain-test.cc(83,3)
          remark #15462: unmasked indexed (or gather) loads: 4 
          remark #15475: --- begin vector cost summary ---
          remark #15476: scalar cost: 42 
-         remark #15477: vector cost: 38.370 
+         remark #15477: vector cost: 38.250 
          remark #15478: estimated potential speedup: 0.780 
          remark #15488: --- end vector cost summary ---
          remark #25436: completely unrolled by 6  
@@ -1654,13 +1643,13 @@ LOOP BEGIN at plain-test.cc(83,3)
       remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(87,11) ]
       remark #15415: vectorization support: non-unit strided load was generated for the variable <Ax[x+(i*6+k)*9600000]>, masked, stride is 57600000   [ plain-test.cc(87,37) ]
       remark #15305: vectorization support: vector length 8
-      remark #15309: vectorization support: normalized vectorization overhead 0.054
+      remark #15309: vectorization support: normalized vectorization overhead 0.055
       remark #15460: masked strided loads: 2 
       remark #15462: unmasked indexed (or gather) loads: 1 
       remark #15475: --- begin vector cost summary ---
       remark #15476: scalar cost: 11 
-      remark #15477: vector cost: 9.250 
-      remark #15478: estimated potential speedup: 0.840 
+      remark #15477: vector cost: 9.120 
+      remark #15478: estimated potential speedup: 0.850 
       remark #15488: --- end vector cost summary ---
       remark #25436: completely unrolled by 6  
 
@@ -1670,13 +1659,13 @@ LOOP BEGIN at plain-test.cc(83,3)
          remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(87,11) ]
          remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(87,62) ]
          remark #15305: vectorization support: vector length 8
-         remark #15309: vectorization support: normalized vectorization overhead 0.055
+         remark #15309: vectorization support: normalized vectorization overhead 0.056
          remark #15460: masked strided loads: 2 
          remark #15462: unmasked indexed (or gather) loads: 1 
          remark #15475: --- begin vector cost summary ---
          remark #15476: scalar cost: 11 
-         remark #15477: vector cost: 9.120 
-         remark #15478: estimated potential speedup: 0.850 
+         remark #15477: vector cost: 9.000 
+         remark #15478: estimated potential speedup: 0.860 
          remark #15488: --- end vector cost summary ---
          remark #25436: completely unrolled by 6  
 
@@ -1689,7 +1678,7 @@ LOOP BEGIN at plain-test.cc(83,3)
             remark #15475: --- begin vector cost summary ---
             remark #15476: scalar cost: 11 
             remark #15477: vector cost: 5.250 
-            remark #15478: estimated potential speedup: 1.530 
+            remark #15478: estimated potential speedup: 1.570 
             remark #15488: --- end vector cost summary ---
             remark #25436: completely unrolled by 6  
          LOOP END
