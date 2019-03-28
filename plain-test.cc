@@ -1,6 +1,8 @@
 #include <iostream>
 #include <time.h>
 #include <memory>
+#include <random>
+
 #define ALIGN 16
 
 constexpr size_t NN = 16*600000;//10000000;
@@ -221,11 +223,15 @@ void test_plainArray_el16mx(float* const* input, const int type) {
 }
 int main(int argc, char* argv[])
 {
+  std::random_device rd;  //Will be used to obtain a seed for the random number engine
+  std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+  std::uniform_real_distribution<> dis(0.0, 100.0);
+
   float **input = new float*[36];
   for (size_t i = 0; i < 36; i++)  {
     input[i] = new float[NN];
     for (size_t x = 0; x < NN; x++)  
-      input[i][x] = (rand()%100)+1;
+      input[i][x] = (float)dis(gen);
   }
 
   std::cout << "done preparing input" << std::endl;

@@ -1,0 +1,833 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
+
+Compiler options: -g -std=c++17 -qopt-report=4 -qopt-report-phase=loop,vec -qopt-report-file=reports/novec-plain.txt -fargument-noalias -no-vec -O3 -march=skylake-avx512 -o plain-test-novec.exe
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(225,3)
+   remark #15382: vectorization support: call to function operator new[](std::size_t) cannot be vectorized   [ plain-test.cc(226,5) ]
+   remark #15382: vectorization support: call to function rand() throw() cannot be vectorized   [ plain-test.cc(228,22) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+
+   LOOP BEGIN at plain-test.cc(227,5)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(14,3) inlined into plain-test.cc(233,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(17,3) inlined into plain-test.cc(233,3)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between Ax[i+x*36] (19:7) and input[i][x] (20:7)
+
+   LOOP BEGIN at plain-test.cc(18,5) inlined into plain-test.cc(233,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed FLOW dependence between Ax[i+x*36] (19:7) and input[i][x] (20:7)
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(26,3) inlined into plain-test.cc(233,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 4 ) --> ( 1 4 2 3 )
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 360
+
+   LOOP BEGIN at plain-test.cc(30,9) inlined into plain-test.cc(233,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed OUTPUT dependence between Cx[Nx+i*6+j] (31:11) and Cx[Nx+i*6+j] (31:11)
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(69,3) inlined into plain-test.cc(235,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(73,5) inlined into plain-test.cc(235,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --> ( 2 1 )
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details   [ plain-test.cc(73,5) ]
+   remark #15346: vector dependence: assumed FLOW dependence between Ax[i*9600000+x] (74:7) and input[i][x] (75:7)   [ plain-test.cc(73,5) ]
+
+   LOOP BEGIN at plain-test.cc(72,3) inlined into plain-test.cc(235,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed FLOW dependence between Ax[i*9600000+x] (74:7) and input[i][x] (75:7)
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3) inlined into plain-test.cc(235,3)
+   remark #25440: unrolled and jammed by 4   (pre-vector) 
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+      remark #25440: unrolled and jammed by 4   (pre-vector) 
+      remark #15423: loop was not vectorized: has only one iteration
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 160
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+   <Remainder>
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3) inlined into plain-test.cc(235,3)
+<Remainder>
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_el16mx(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(124,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(128,5)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 ) --> ( 2 1 3 )
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag   [ plain-test.cc(128,5) ]
+
+   LOOP BEGIN at plain-test.cc(127,3)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+      LOOP BEGIN at plain-test.cc(129,7)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 16  
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(139,5)
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(141,7)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(181,5)
+   remark #25101: Loop Interchange not done due to: Original Order seems proper
+   remark #25452: Original Order found to be proper, but by a close margin
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(183,7)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+      LOOP BEGIN at plain-test.cc(184,9)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+         LOOP BEGIN at plain-test.cc(185,11)
+            remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+            remark #15346: vector dependence: assumed OUTPUT dependence between Cx[Nx+(i*6+j)*16+n] (187:15) and Cx[Nx+(i*6+j)*16+n] (187:15)
+
+            LOOP BEGIN at plain-test.cc(186,13)
+               remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+               remark #25436: completely unrolled by 16  
+            LOOP END
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at /usr/include/c++/7.3.0/bits/char_traits.h(231,7) inlined into /usr/include/c++/7.3.0/bits/char_traits.h(318,6)
+   remark #15523: loop was not vectorized: loop control variable __s was found, but loop iteration count cannot be computed before executing the loop
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/7.3.0/bits/char_traits.h(165,7) inlined into /usr/include/c++/7.3.0/bits/char_traits.h(319,11)
+   remark #15523: loop was not vectorized: loop control variable __i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_matrix(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(14,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(17,3)
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(18,5)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(26,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 4 ) --> ( 1 4 2 3 )
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 360
+
+   LOOP BEGIN at plain-test.cc(30,9)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed OUTPUT dependence between Cx[Nx+i*6+j] (31:11) and Cx[Nx+i*6+j] (31:11)
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(28,5)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(29,7)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_element(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(69,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(73,5)
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --> ( 2 1 )
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag   [ plain-test.cc(73,5) ]
+
+   LOOP BEGIN at plain-test.cc(72,3)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3)
+   remark #25440: unrolled and jammed by 4   (pre-vector) 
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(82,5)
+      remark #25440: unrolled and jammed by 4   (pre-vector) 
+      remark #15423: loop was not vectorized: has only one iteration
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25456: Number of Array Refs Scalar Replaced In Loop: 160
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(82,5)
+   <Remainder>
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3)
+<Remainder>
+   remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+
+   LOOP BEGIN at plain-test.cc(82,5)
+      remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15540: loop was not vectorized: auto-vectorization is disabled with -no-vec flag
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
