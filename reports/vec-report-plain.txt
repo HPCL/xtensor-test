@@ -1,0 +1,1748 @@
+Intel(R) Advisor can now assist with vectorization and show optimization
+  report messages with your source code.
+See "https://software.intel.com/en-us/intel-advisor-xe" for details.
+
+Intel(R) C++ Intel(R) 64 Compiler for applications running on Intel(R) 64, Version 19.0.0.117 Build 20180804
+
+Compiler options: -g -std=c++17 -qopt-report=4 -qopt-report-phase=loop,vec -qopt-report-file=plain_report.txt -fargument-noalias -qopt-zmm-usage=high -O3 -march=skylake-avx512 -o plain-test.exe
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(225,3)
+   remark #15382: vectorization support: call to function operator new[](std::size_t) cannot be vectorized   [ plain-test.cc(226,5) ]
+   remark #15382: vectorization support: call to function rand() throw() cannot be vectorized   [ plain-test.cc(228,22) ]
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+
+   LOOP BEGIN at plain-test.cc(227,5)
+      remark #15527: loop was not vectorized: function call to rand() throw() cannot be vectorized   [ plain-test.cc(228,22) ]
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(14,3) inlined into plain-test.cc(233,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(17,3) inlined into plain-test.cc(233,3)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between Ax[i+x*36] (19:7) and input[i][x] (20:7)
+
+   LOOP BEGIN at plain-test.cc(18,5) inlined into plain-test.cc(233,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed FLOW dependence between Ax[i+x*36] (19:7) and input[i][x] (20:7)
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(26,3) inlined into plain-test.cc(233,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 4 ) --> ( 1 4 2 3 )
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ plain-test.cc(29,7) ]
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 360
+
+   LOOP BEGIN at plain-test.cc(30,9) inlined into plain-test.cc(233,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed OUTPUT dependence between Cx[Nx+i*6+j] (31:11) and Cx[Nx+i*6+j] (31:11)
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ plain-test.cc(29,7) ]
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+            remark #15389: vectorization support: reference Cx[Nx+i*6+j] has unaligned access   [ plain-test.cc(31,11) ]
+            remark #15389: vectorization support: reference Cx[Nx+i*6+j] has unaligned access   [ plain-test.cc(31,11) ]
+            remark #15389: vectorization support: reference Bx[Nx+k*6+j] has unaligned access   [ plain-test.cc(31,58) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+            remark #15305: vectorization support: vector length 8
+            remark #15427: loop was completely unrolled
+            remark #15309: vectorization support: normalized vectorization overhead 0.588
+            remark #15456: masked unaligned unit stride loads: 2 
+            remark #15457: masked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 10 
+            remark #15477: vector cost: 2.120 
+            remark #15478: estimated potential speedup: 2.220 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5) inlined into plain-test.cc(233,3)
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7) inlined into plain-test.cc(233,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(69,3) inlined into plain-test.cc(235,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(73,5) inlined into plain-test.cc(235,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --> ( 2 1 )
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details   [ plain-test.cc(73,5) ]
+   remark #15346: vector dependence: assumed FLOW dependence between Ax[i*9600000+x] (74:7) and input[i][x] (75:7)   [ plain-test.cc(73,5) ]
+
+   LOOP BEGIN at plain-test.cc(72,3) inlined into plain-test.cc(235,3)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed FLOW dependence between Ax[i*9600000+x] (74:7) and input[i][x] (75:7)
+      remark #25438: unrolled without remainder by 2  
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3) inlined into plain-test.cc(235,3)
+   remark #25440: unrolled and jammed by 4   (pre-vector) 
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+      remark #25440: unrolled and jammed by 4   (pre-vector) 
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15452: unmasked strided loads: 32 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 168 
+            remark #15477: vector cost: 104.000 
+            remark #15478: estimated potential speedup: 1.210 
+            remark #15488: --- end vector cost summary ---
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         <Remainder loop for vectorization>
+            remark #25436: completely unrolled by 2  
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+   <Remainder>
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.178
+      remark #15452: unmasked strided loads: 8 
+      remark #15453: unmasked strided stores: 4 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 42 
+      remark #15477: vector cost: 45.000 
+      remark #15478: estimated potential speedup: 0.790 
+      remark #15488: --- end vector cost summary ---
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15305: vectorization support: vector length 8
+         remark #15309: vectorization support: normalized vectorization overhead 0.052
+         remark #15460: masked strided loads: 8 
+         remark #15462: unmasked indexed (or gather) loads: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 42 
+         remark #15477: vector cost: 38.250 
+         remark #15478: estimated potential speedup: 0.780 
+         remark #15488: --- end vector cost summary ---
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15553: loop was not vectorized: number of iterations (6) is insufficient for vectorization
+            remark #15452: unmasked strided loads: 8 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 42 
+            remark #15477: vector cost: 21.000 
+            remark #15478: estimated potential speedup: 1.500 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3) inlined into plain-test.cc(235,3)
+<Remainder>
+   remark #15388: vectorization support: reference Cx[x+(i*6+j)*9600000] has aligned access   [ plain-test.cc(85,11) ]
+   remark #15388: vectorization support: reference Cx[x+(i*6+j)*9600000] has aligned access   [ plain-test.cc(85,11) ]
+   remark #15388: vectorization support: reference Ax[x+(i*6+k)*9600000] has aligned access   [ plain-test.cc(85,37) ]
+   remark #15388: vectorization support: reference Bx[x+(k*6+j)*9600000] has aligned access   [ plain-test.cc(85,62) ]
+   remark #15305: vectorization support: vector length 4
+   remark #15315: loop was not vectorized: estimated number of iterations (0) is insufficient for vectorization
+   remark #15448: unmasked aligned unit stride loads: 3 
+   remark #15449: unmasked aligned unit stride stores: 1 
+
+   LOOP BEGIN at plain-test.cc(82,5) inlined into plain-test.cc(235,3)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15415: vectorization support: non-unit strided load was generated for the variable <Ax[x+(i*6+k)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.055
+      remark #15460: masked strided loads: 2 
+      remark #15462: unmasked indexed (or gather) loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 9.120 
+      remark #15478: estimated potential speedup: 0.850 
+      remark #15488: --- end vector cost summary ---
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15305: vectorization support: vector length 8
+         remark #15309: vectorization support: normalized vectorization overhead 0.056
+         remark #15460: masked strided loads: 2 
+         remark #15462: unmasked indexed (or gather) loads: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 9.000 
+         remark #15478: estimated potential speedup: 0.860 
+         remark #15488: --- end vector cost summary ---
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15553: loop was not vectorized: number of iterations (6) is insufficient for vectorization
+            remark #15452: unmasked strided loads: 2 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 11 
+            remark #15477: vector cost: 5.250 
+            remark #15478: estimated potential speedup: 1.570 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7) inlined into plain-test.cc(235,3)
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9) inlined into plain-test.cc(235,3)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_el16mx(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(124,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(128,5)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 ) --> ( 2 1 3 )
+   remark #15542: loop was not vectorized: inner loop was already vectorized   [ plain-test.cc(128,5) ]
+
+   LOOP BEGIN at plain-test.cc(127,3)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+      remark #25438: unrolled without remainder by 2  
+
+      LOOP BEGIN at plain-test.cc(129,7)
+         remark #15389: vectorization support: reference Ax[n+i*16+x*576] has unaligned access   [ plain-test.cc(130,9) ]
+         remark #15389: vectorization support: reference input[i][n+x*16] has unaligned access   [ plain-test.cc(130,34) ]
+         remark #15389: vectorization support: reference Bx[n+i*16+x*576] has unaligned access   [ plain-test.cc(131,9) ]
+         remark #15389: vectorization support: reference input[i][n+x*16] has unaligned access   [ plain-test.cc(131,34) ]
+         remark #15381: vectorization support: unaligned access used inside loop body
+         remark #15305: vectorization support: vector length 16
+         remark #15427: loop was completely unrolled
+         remark #15309: vectorization support: normalized vectorization overhead 0.562
+         remark #15300: LOOP WAS VECTORIZED
+         remark #15450: unmasked unaligned unit stride loads: 1 
+         remark #15451: unmasked unaligned unit stride stores: 2 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 1.000 
+         remark #15478: estimated potential speedup: 7.040 
+         remark #15488: --- end vector cost summary ---
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(139,5)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at plain-test.cc(141,7)
+      remark #15389: vectorization support: reference Cx[Nx+n] has unaligned access   [ plain-test.cc(142,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(142,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(142,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(142,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(142,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(142,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(142,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(142,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(142,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(142,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(142,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(142,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(142,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+16+n] has unaligned access   [ plain-test.cc(143,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(143,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(143,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(143,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(143,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(143,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(143,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(143,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(143,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(143,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(143,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(143,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(143,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+32+n] has unaligned access   [ plain-test.cc(144,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(144,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(144,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(144,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(144,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(144,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(144,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(144,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(144,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(144,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(144,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(144,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(144,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+48+n] has unaligned access   [ plain-test.cc(145,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(145,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(145,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(145,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(145,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(145,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(145,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(145,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(145,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(145,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(145,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(145,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(145,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+64+n] has unaligned access   [ plain-test.cc(146,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(146,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(146,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(146,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(146,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(146,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(146,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(146,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(146,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(146,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(146,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(146,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(146,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+80+n] has unaligned access   [ plain-test.cc(147,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+n] has unaligned access   [ plain-test.cc(147,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(147,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+16+n] has unaligned access   [ plain-test.cc(147,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(147,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+32+n] has unaligned access   [ plain-test.cc(147,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(147,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+48+n] has unaligned access   [ plain-test.cc(147,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(147,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+64+n] has unaligned access   [ plain-test.cc(147,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(147,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+80+n] has unaligned access   [ plain-test.cc(147,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(147,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+96+n] has unaligned access   [ plain-test.cc(148,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(148,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(148,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(148,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(148,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(148,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(148,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(148,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(148,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(148,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(148,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(148,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(148,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+112+n] has unaligned access   [ plain-test.cc(149,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(149,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(149,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(149,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(149,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(149,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(149,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(149,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(149,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(149,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(149,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(149,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(149,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+128+n] has unaligned access   [ plain-test.cc(150,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(150,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(150,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(150,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(150,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(150,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(150,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(150,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(150,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(150,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(150,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(150,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(150,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+144+n] has unaligned access   [ plain-test.cc(151,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(151,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(151,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(151,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(151,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(151,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(151,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(151,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(151,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(151,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(151,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(151,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(151,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+160+n] has unaligned access   [ plain-test.cc(152,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(152,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(152,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(152,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(152,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(152,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(152,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(152,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(152,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(152,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(152,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(152,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(152,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+176+n] has unaligned access   [ plain-test.cc(153,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+96+n] has unaligned access   [ plain-test.cc(153,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(153,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+112+n] has unaligned access   [ plain-test.cc(153,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(153,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+128+n] has unaligned access   [ plain-test.cc(153,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(153,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+144+n] has unaligned access   [ plain-test.cc(153,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(153,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+160+n] has unaligned access   [ plain-test.cc(153,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(153,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+176+n] has unaligned access   [ plain-test.cc(153,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(153,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+192+n] has unaligned access   [ plain-test.cc(154,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(154,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(154,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(154,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(154,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(154,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(154,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(154,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(154,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(154,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(154,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(154,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(154,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+208+n] has unaligned access   [ plain-test.cc(155,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(155,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(155,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(155,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(155,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(155,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(155,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(155,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(155,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(155,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(155,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(155,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(155,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+224+n] has unaligned access   [ plain-test.cc(156,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(156,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(156,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(156,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(156,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(156,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(156,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(156,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(156,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(156,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(156,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(156,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(156,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+240+n] has unaligned access   [ plain-test.cc(157,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(157,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(157,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(157,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(157,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(157,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(157,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(157,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(157,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(157,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(157,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(157,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(157,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+256+n] has unaligned access   [ plain-test.cc(158,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(158,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(158,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(158,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(158,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(158,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(158,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(158,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(158,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(158,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(158,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(158,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(158,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+272+n] has unaligned access   [ plain-test.cc(159,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+192+n] has unaligned access   [ plain-test.cc(159,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(159,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+208+n] has unaligned access   [ plain-test.cc(159,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(159,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+224+n] has unaligned access   [ plain-test.cc(159,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(159,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+240+n] has unaligned access   [ plain-test.cc(159,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(159,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+256+n] has unaligned access   [ plain-test.cc(159,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(159,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+272+n] has unaligned access   [ plain-test.cc(159,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(159,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+288+n] has unaligned access   [ plain-test.cc(160,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(160,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(160,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(160,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(160,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(160,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(160,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(160,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(160,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(160,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(160,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(160,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(160,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+304+n] has unaligned access   [ plain-test.cc(161,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(161,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(161,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(161,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(161,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(161,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(161,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(161,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(161,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(161,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(161,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(161,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(161,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+320+n] has unaligned access   [ plain-test.cc(162,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(162,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(162,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(162,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(162,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(162,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(162,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(162,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(162,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(162,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(162,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(162,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(162,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+336+n] has unaligned access   [ plain-test.cc(163,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(163,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(163,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(163,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(163,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(163,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(163,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(163,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(163,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(163,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(163,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(163,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(163,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+352+n] has unaligned access   [ plain-test.cc(164,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(164,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(164,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(164,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(164,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(164,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(164,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(164,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(164,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(164,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(164,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(164,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(164,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+368+n] has unaligned access   [ plain-test.cc(165,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+288+n] has unaligned access   [ plain-test.cc(165,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(165,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+304+n] has unaligned access   [ plain-test.cc(165,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(165,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+320+n] has unaligned access   [ plain-test.cc(165,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(165,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+336+n] has unaligned access   [ plain-test.cc(165,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(165,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+352+n] has unaligned access   [ plain-test.cc(165,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(165,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+368+n] has unaligned access   [ plain-test.cc(165,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(165,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+384+n] has unaligned access   [ plain-test.cc(166,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(166,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(166,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(166,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(166,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(166,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(166,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(166,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(166,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(166,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(166,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(166,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(166,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+400+n] has unaligned access   [ plain-test.cc(167,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(167,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(167,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(167,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(167,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(167,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(167,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(167,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(167,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(167,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(167,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(167,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(167,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+416+n] has unaligned access   [ plain-test.cc(168,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(168,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(168,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(168,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(168,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(168,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(168,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(168,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(168,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(168,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(168,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(168,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(168,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+432+n] has unaligned access   [ plain-test.cc(169,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(169,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(169,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(169,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(169,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(169,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(169,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(169,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(169,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(169,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(169,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(169,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(169,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+448+n] has unaligned access   [ plain-test.cc(170,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(170,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(170,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(170,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(170,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(170,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(170,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(170,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(170,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(170,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(170,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(170,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(170,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+464+n] has unaligned access   [ plain-test.cc(171,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+384+n] has unaligned access   [ plain-test.cc(171,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(171,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+400+n] has unaligned access   [ plain-test.cc(171,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(171,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+416+n] has unaligned access   [ plain-test.cc(171,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(171,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+432+n] has unaligned access   [ plain-test.cc(171,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(171,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+448+n] has unaligned access   [ plain-test.cc(171,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(171,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+464+n] has unaligned access   [ plain-test.cc(171,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(171,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+480+n] has unaligned access   [ plain-test.cc(172,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(172,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+n] has unaligned access   [ plain-test.cc(172,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(172,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+96+n] has unaligned access   [ plain-test.cc(172,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(172,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+192+n] has unaligned access   [ plain-test.cc(172,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(172,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+288+n] has unaligned access   [ plain-test.cc(172,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(172,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+384+n] has unaligned access   [ plain-test.cc(172,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(172,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+480+n] has unaligned access   [ plain-test.cc(172,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+496+n] has unaligned access   [ plain-test.cc(173,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(173,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+16+n] has unaligned access   [ plain-test.cc(173,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(173,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+112+n] has unaligned access   [ plain-test.cc(173,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(173,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+208+n] has unaligned access   [ plain-test.cc(173,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(173,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+304+n] has unaligned access   [ plain-test.cc(173,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(173,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+400+n] has unaligned access   [ plain-test.cc(173,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(173,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+496+n] has unaligned access   [ plain-test.cc(173,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+512+n] has unaligned access   [ plain-test.cc(174,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(174,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+32+n] has unaligned access   [ plain-test.cc(174,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(174,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+128+n] has unaligned access   [ plain-test.cc(174,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(174,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+224+n] has unaligned access   [ plain-test.cc(174,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(174,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+320+n] has unaligned access   [ plain-test.cc(174,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(174,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+416+n] has unaligned access   [ plain-test.cc(174,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(174,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+512+n] has unaligned access   [ plain-test.cc(174,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+528+n] has unaligned access   [ plain-test.cc(175,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(175,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+48+n] has unaligned access   [ plain-test.cc(175,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(175,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+144+n] has unaligned access   [ plain-test.cc(175,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(175,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+240+n] has unaligned access   [ plain-test.cc(175,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(175,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+336+n] has unaligned access   [ plain-test.cc(175,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(175,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+432+n] has unaligned access   [ plain-test.cc(175,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(175,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+528+n] has unaligned access   [ plain-test.cc(175,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+544+n] has unaligned access   [ plain-test.cc(176,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(176,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+64+n] has unaligned access   [ plain-test.cc(176,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(176,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+160+n] has unaligned access   [ plain-test.cc(176,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(176,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+256+n] has unaligned access   [ plain-test.cc(176,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(176,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+352+n] has unaligned access   [ plain-test.cc(176,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(176,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+448+n] has unaligned access   [ plain-test.cc(176,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(176,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+544+n] has unaligned access   [ plain-test.cc(176,201) ]
+      remark #15389: vectorization support: reference Cx[Nx+560+n] has unaligned access   [ plain-test.cc(177,9) ]
+      remark #15389: vectorization support: reference Ax[Nx+480+n] has unaligned access   [ plain-test.cc(177,26) ]
+      remark #15389: vectorization support: reference Bx[Nx+80+n] has unaligned access   [ plain-test.cc(177,41) ]
+      remark #15389: vectorization support: reference Ax[Nx+496+n] has unaligned access   [ plain-test.cc(177,58) ]
+      remark #15389: vectorization support: reference Bx[Nx+176+n] has unaligned access   [ plain-test.cc(177,73) ]
+      remark #15389: vectorization support: reference Ax[Nx+512+n] has unaligned access   [ plain-test.cc(177,90) ]
+      remark #15389: vectorization support: reference Bx[Nx+272+n] has unaligned access   [ plain-test.cc(177,105) ]
+      remark #15389: vectorization support: reference Ax[Nx+528+n] has unaligned access   [ plain-test.cc(177,122) ]
+      remark #15389: vectorization support: reference Bx[Nx+368+n] has unaligned access   [ plain-test.cc(177,137) ]
+      remark #15389: vectorization support: reference Ax[Nx+544+n] has unaligned access   [ plain-test.cc(177,154) ]
+      remark #15389: vectorization support: reference Bx[Nx+464+n] has unaligned access   [ plain-test.cc(177,169) ]
+      remark #15389: vectorization support: reference Ax[Nx+560+n] has unaligned access   [ plain-test.cc(177,186) ]
+      remark #15389: vectorization support: reference Bx[Nx+560+n] has unaligned access   [ plain-test.cc(177,201) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 16
+      remark #15427: loop was completely unrolled
+      remark #15309: vectorization support: normalized vectorization overhead 0.281
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15450: unmasked unaligned unit stride loads: 72 
+      remark #15451: unmasked unaligned unit stride stores: 36 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 1350 
+      remark #15477: vector cost: 72.000 
+      remark #15478: estimated potential speedup: 14.630 
+      remark #15488: --- end vector cost summary ---
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(181,5)
+   remark #25101: Loop Interchange not done due to: Original Order seems proper
+   remark #25452: Original Order found to be proper, but by a close margin
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at plain-test.cc(183,7)
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+      remark #25456: Number of Array Refs Scalar Replaced In Loop: 60
+
+      LOOP BEGIN at plain-test.cc(184,9)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(185,11)
+            remark #15542: loop was not vectorized: inner loop was already vectorized
+            remark #25436: completely unrolled by 6  
+
+            LOOP BEGIN at plain-test.cc(186,13)
+               remark #15389: vectorization support: reference Cx[Nx+(i*6+j)*16+n] has unaligned access   [ plain-test.cc(187,15) ]
+               remark #15389: vectorization support: reference Cx[Nx+(i*6+j)*16+n] has unaligned access   [ plain-test.cc(187,15) ]
+               remark #15389: vectorization support: reference Ax[Nx+(i*6+k)*16+n] has unaligned access   [ plain-test.cc(187,46) ]
+               remark #15389: vectorization support: reference Bx[Nx+(k*6+j)*16+n] has unaligned access   [ plain-test.cc(187,76) ]
+               remark #15381: vectorization support: unaligned access used inside loop body
+               remark #15305: vectorization support: vector length 16
+               remark #15427: loop was completely unrolled
+               remark #15309: vectorization support: normalized vectorization overhead 0.750
+               remark #15300: LOOP WAS VECTORIZED
+               remark #15450: unmasked unaligned unit stride loads: 3 
+               remark #15451: unmasked unaligned unit stride stores: 1 
+               remark #15475: --- begin vector cost summary ---
+               remark #15476: scalar cost: 11 
+               remark #15477: vector cost: 1.000 
+               remark #15478: estimated potential speedup: 6.280 
+               remark #15488: --- end vector cost summary ---
+            LOOP END
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(185,11)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(185,11)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(185,11)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(185,11)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(185,11)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: std::char_traits<char>::length(const std::char_traits<char>::char_type *)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at /usr/include/c++/7.3.0/bits/char_traits.h(231,7) inlined into /usr/include/c++/7.3.0/bits/char_traits.h(318,6)
+   remark #15523: loop was not vectorized: loop control variable __s was found, but loop iteration count cannot be computed before executing the loop
+LOOP END
+
+LOOP BEGIN at /usr/include/c++/7.3.0/bits/char_traits.h(165,7) inlined into /usr/include/c++/7.3.0/bits/char_traits.h(319,11)
+   remark #15523: loop was not vectorized: loop control variable __i was found, but loop iteration count cannot be computed before executing the loop
+   remark #25478: While Loop Unrolled by 2  
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_matrix(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(14,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(17,3)
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at plain-test.cc(18,5)
+   <Peeled loop for vectorization>
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(19,22) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(20,22) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.214
+      remark #15301: PEEL LOOP WAS VECTORIZED
+      remark #25015: Estimate of max trip count of loop=1
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(18,5)
+      remark #15388: vectorization support: reference input[i][x] has aligned access   [ plain-test.cc(19,22) ]
+      remark #15388: vectorization support: reference input[i][x] has aligned access   [ plain-test.cc(20,22) ]
+      remark #15416: vectorization support: non-unit strided store was generated for the variable <Ax[i+x*36]>, stride is 36   [ plain-test.cc(19,7) ]
+      remark #15416: vectorization support: non-unit strided store was generated for the variable <Bx[i+x*36]>, stride is 36   [ plain-test.cc(20,7) ]
+      remark #15305: vectorization support: vector length 32
+      remark #15309: vectorization support: normalized vectorization overhead 0.091
+      remark #15300: LOOP WAS VECTORIZED
+      remark #15448: unmasked aligned unit stride loads: 1 
+      remark #15453: unmasked strided stores: 2 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 3.430 
+      remark #15478: estimated potential speedup: 3.190 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=300000
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(18,5)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(19,22) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(20,22) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.214
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(26,3)
+   remark #25444: Loopnest Interchanged: ( 1 2 3 4 ) --> ( 1 4 2 3 )
+   remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ plain-test.cc(29,7) ]
+   remark #25456: Number of Array Refs Scalar Replaced In Loop: 360
+
+   LOOP BEGIN at plain-test.cc(30,9)
+      remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+      remark #15346: vector dependence: assumed OUTPUT dependence between Cx[Nx+i*6+j] (31:11) and Cx[Nx+i*6+j] (31:11)
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(28,5)
+         remark #15541: outer loop was not auto-vectorized: consider using SIMD directive   [ plain-test.cc(29,7) ]
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(29,7)
+            remark #15389: vectorization support: reference Cx[Nx+i*6+j] has unaligned access   [ plain-test.cc(31,11) ]
+            remark #15389: vectorization support: reference Cx[Nx+i*6+j] has unaligned access   [ plain-test.cc(31,11) ]
+            remark #15389: vectorization support: reference Bx[Nx+k*6+j] has unaligned access   [ plain-test.cc(31,58) ]
+            remark #15381: vectorization support: unaligned access used inside loop body
+            remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+            remark #15305: vectorization support: vector length 8
+            remark #15427: loop was completely unrolled
+            remark #15309: vectorization support: normalized vectorization overhead 0.588
+            remark #15456: masked unaligned unit stride loads: 2 
+            remark #15457: masked unaligned unit stride stores: 1 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 10 
+            remark #15477: vector cost: 2.120 
+            remark #15478: estimated potential speedup: 2.220 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(28,5)
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(29,7)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: test_plainArray_element(float *const *, int)
+
+    Report from: Loop nest & Vector optimizations [loop, vec]
+
+
+LOOP BEGIN at plain-test.cc(69,3)
+   remark #25408: memset generated
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at plain-test.cc(73,5)
+   remark #25444: Loopnest Interchanged: ( 1 2 ) --> ( 2 1 )
+   remark #15542: loop was not vectorized: inner loop was already vectorized   [ plain-test.cc(73,5) ]
+
+   LOOP BEGIN at plain-test.cc(72,3)
+   <Peeled loop for vectorization>
+      remark #15389: vectorization support: reference Ax[i*9600000+x] has unaligned access   [ plain-test.cc(74,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(74,22) ]
+      remark #15389: vectorization support: reference Bx[i*9600000+x] has unaligned access   [ plain-test.cc(75,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(75,22) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.632
+      remark #15301: PEEL LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 3 
+      remark #15449: unmasked aligned unit stride stores: 1 
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(72,3)
+      remark #15389: vectorization support: reference Ax[i*9600000+x] has unaligned access   [ plain-test.cc(74,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(74,22) ]
+      remark #15388: vectorization support: reference Bx[i*9600000+x] has aligned access   [ plain-test.cc(75,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(75,22) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15412: vectorization support: streaming store was generated for Bx[i*9600000+x]   [ plain-test.cc(75,7) ]
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 1.231
+      remark #15301: PERMUTED LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15449: unmasked aligned unit stride stores: 1 
+      remark #15450: unmasked unaligned unit stride loads: 1 
+      remark #15451: unmasked unaligned unit stride stores: 1 
+      remark #15467: unmasked aligned streaming stores: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 0.810 
+      remark #15478: estimated potential speedup: 13.530 
+      remark #15488: --- end vector cost summary ---
+      remark #25015: Estimate of max trip count of loop=600000
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(72,3)
+   <Remainder loop for vectorization>
+      remark #15389: vectorization support: reference Ax[i*9600000+x] has unaligned access   [ plain-test.cc(74,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(74,22) ]
+      remark #15389: vectorization support: reference Bx[i*9600000+x] has unaligned access   [ plain-test.cc(75,7) ]
+      remark #15389: vectorization support: reference input[i][x] has unaligned access   [ plain-test.cc(75,22) ]
+      remark #15381: vectorization support: unaligned access used inside loop body
+      remark #15305: vectorization support: vector length 16
+      remark #15309: vectorization support: normalized vectorization overhead 0.632
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+      remark #15442: entire loop may be executed in remainder
+      remark #15448: unmasked aligned unit stride loads: 3 
+      remark #15449: unmasked aligned unit stride stores: 1 
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3)
+   remark #25440: unrolled and jammed by 4   (pre-vector) 
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at plain-test.cc(82,5)
+      remark #25440: unrolled and jammed by 4   (pre-vector) 
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15542: loop was not vectorized: inner loop was already vectorized
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15300: LOOP WAS VECTORIZED
+            remark #15452: unmasked strided loads: 32 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 168 
+            remark #15477: vector cost: 104.000 
+            remark #15478: estimated potential speedup: 1.210 
+            remark #15488: --- end vector cost summary ---
+            remark #25015: Estimate of max trip count of loop=1
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         <Remainder loop for vectorization>
+            remark #25436: completely unrolled by 2  
+         LOOP END
+      LOOP END
+   LOOP END
+
+   LOOP BEGIN at plain-test.cc(82,5)
+   <Remainder>
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15329: vectorization support: non-unit strided store was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Cx[x+(i*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15305: vectorization support: vector length 2
+      remark #15309: vectorization support: normalized vectorization overhead 0.178
+      remark #15452: unmasked strided loads: 8 
+      remark #15453: unmasked strided stores: 4 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 42 
+      remark #15477: vector cost: 45.000 
+      remark #15478: estimated potential speedup: 0.790 
+      remark #15488: --- end vector cost summary ---
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15305: vectorization support: vector length 8
+         remark #15309: vectorization support: normalized vectorization overhead 0.052
+         remark #15460: masked strided loads: 8 
+         remark #15462: unmasked indexed (or gather) loads: 4 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 42 
+         remark #15477: vector cost: 38.250 
+         remark #15478: estimated potential speedup: 0.780 
+         remark #15488: --- end vector cost summary ---
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15553: loop was not vectorized: number of iterations (6) is insufficient for vectorization
+            remark #15452: unmasked strided loads: 8 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 42 
+            remark #15477: vector cost: 21.000 
+            remark #15478: estimated potential speedup: 1.500 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at plain-test.cc(81,3)
+<Remainder>
+   remark #15388: vectorization support: reference Cx[x+(i*6+j)*9600000] has aligned access   [ plain-test.cc(85,11) ]
+   remark #15388: vectorization support: reference Cx[x+(i*6+j)*9600000] has aligned access   [ plain-test.cc(85,11) ]
+   remark #15388: vectorization support: reference Ax[x+(i*6+k)*9600000] has aligned access   [ plain-test.cc(85,37) ]
+   remark #15388: vectorization support: reference Bx[x+(k*6+j)*9600000] has aligned access   [ plain-test.cc(85,62) ]
+   remark #15305: vectorization support: vector length 4
+   remark #15315: loop was not vectorized: estimated number of iterations (0) is insufficient for vectorization
+   remark #15448: unmasked aligned unit stride loads: 3 
+   remark #15449: unmasked aligned unit stride stores: 1 
+
+   LOOP BEGIN at plain-test.cc(82,5)
+      remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+      remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,11) ]
+      remark #15415: vectorization support: non-unit strided load was generated for the variable <Ax[x+(i*6+k)*9600000]>, masked, stride is 57600000   [ plain-test.cc(85,37) ]
+      remark #15305: vectorization support: vector length 8
+      remark #15309: vectorization support: normalized vectorization overhead 0.055
+      remark #15460: masked strided loads: 2 
+      remark #15462: unmasked indexed (or gather) loads: 1 
+      remark #15475: --- begin vector cost summary ---
+      remark #15476: scalar cost: 11 
+      remark #15477: vector cost: 9.120 
+      remark #15478: estimated potential speedup: 0.850 
+      remark #15488: --- end vector cost summary ---
+      remark #25436: completely unrolled by 6  
+
+      LOOP BEGIN at plain-test.cc(83,7)
+         remark #15335: loop was not vectorized: vectorization possible but seems inefficient. Use vector always directive or -vec-threshold0 to override 
+         remark #15416: vectorization support: non-unit strided store was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Cx[x+(i*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,11) ]
+         remark #15415: vectorization support: non-unit strided load was generated for the variable <Bx[x+(k*6+j)*9600000]>, masked, stride is 9600000   [ plain-test.cc(85,62) ]
+         remark #15305: vectorization support: vector length 8
+         remark #15309: vectorization support: normalized vectorization overhead 0.056
+         remark #15460: masked strided loads: 2 
+         remark #15462: unmasked indexed (or gather) loads: 1 
+         remark #15475: --- begin vector cost summary ---
+         remark #15476: scalar cost: 11 
+         remark #15477: vector cost: 9.000 
+         remark #15478: estimated potential speedup: 0.860 
+         remark #15488: --- end vector cost summary ---
+         remark #25436: completely unrolled by 6  
+
+         LOOP BEGIN at plain-test.cc(84,9)
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Ax[x+(i*6+k)*9600000]>, stride is 9600000   [ plain-test.cc(85,37) ]
+            remark #15328: vectorization support: non-unit strided load was emulated for the variable <Bx[x+(k*6+j)*9600000]>, stride is 57600000   [ plain-test.cc(85,62) ]
+            remark #15305: vectorization support: vector length 4
+            remark #15553: loop was not vectorized: number of iterations (6) is insufficient for vectorization
+            remark #15452: unmasked strided loads: 2 
+            remark #15475: --- begin vector cost summary ---
+            remark #15476: scalar cost: 11 
+            remark #15477: vector cost: 5.250 
+            remark #15478: estimated potential speedup: 1.570 
+            remark #15488: --- end vector cost summary ---
+            remark #25436: completely unrolled by 6  
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+
+      LOOP BEGIN at plain-test.cc(83,7)
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+
+         LOOP BEGIN at plain-test.cc(84,9)
+         LOOP END
+      LOOP END
+   LOOP END
+LOOP END
+===========================================================================
